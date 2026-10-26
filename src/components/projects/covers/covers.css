@@ -1,0 +1,98 @@
+.cover {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.cover svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cover-mono {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+}
+.cover-display {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+.cover-body {
+  font-family: var(--font-body);
+}
+
+/* Depth layers follow the pointer (vars set by usePointerTilt on an ancestor). */
+.cover-layer {
+  transform: translate(calc(var(--mx, 0) * var(--d) * -7px), calc(var(--my, 0) * var(--d) * -6px));
+  transition: transform 0.9s var(--ease-out);
+}
+
+/* Ambient animation — only while the cover is on screen. */
+.cover-flow {
+  stroke-dasharray: 6 10;
+}
+.cover[data-live='true'] .cover-flow {
+  animation: cover-flow 1.8s linear infinite;
+}
+.cover[data-live='true'] .cover-scan {
+  animation: cover-scan 3.4s var(--ease-in-out) infinite alternate;
+}
+.cover[data-live='true'] .cover-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: cover-pulse 2.2s ease-in-out infinite;
+}
+.cover[data-live='true'] .cover-pulse-soft {
+  animation: cover-soft 2.8s ease-in-out infinite;
+}
+.cover[data-live='true'] .cover-blink {
+  animation: cover-blink 2.6s steps(2, jump-none) infinite;
+}
+.cover[data-live='true'] .cover-typing {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: cover-typing 1.2s ease-in-out infinite;
+}
+.cover[data-live='true'] .cover-sheen {
+  animation: cover-soft 4s ease-in-out infinite;
+}
+
+@keyframes cover-flow {
+  to {
+    stroke-dashoffset: -32;
+  }
+}
+@keyframes cover-scan {
+  to {
+    transform: translateY(296px);
+  }
+}
+@keyframes cover-pulse {
+  50% {
+    opacity: 0.45;
+    transform: scale(1.5);
+  }
+}
+@keyframes cover-soft {
+  50% {
+    opacity: 0.55;
+  }
+}
+@keyframes cover-blink {
+  50% {
+    opacity: 0.35;
+  }
+}
+@keyframes cover-typing {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}

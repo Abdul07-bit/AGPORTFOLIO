@@ -1,0 +1,66 @@
+.progress {
+  --progress: 0;
+  pointer-events: none;
+}
+
+/* Mobile / tablet: a hairline across the top */
+.progress__bar {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: calc(var(--z-nav) + 1);
+  height: 2px;
+  background: var(--c-red);
+  transform-origin: left;
+  transform: scaleX(var(--progress));
+}
+
+/* Desktop: vertical rail on the right edge */
+.progress__rail {
+  position: fixed;
+  right: max(14px, calc(var(--gutter) / 2 - 8px));
+  top: 50%;
+  z-index: var(--z-progress);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  transform: translateY(-50%);
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+/* The work gallery has its own HUD — step aside while it is pinned. */
+.progress[data-section='work'] .progress__rail {
+  opacity: 0;
+}
+.progress__index {
+  color: var(--c-red);
+}
+.progress__track {
+  position: relative;
+  width: 1px;
+  height: 140px;
+  background: var(--c-border-strong);
+  overflow: hidden;
+}
+.progress__fill {
+  position: absolute;
+  inset: 0;
+  background: var(--c-silver);
+  transform-origin: top;
+  transform: scaleY(var(--progress));
+}
+.progress__label {
+  writing-mode: vertical-rl;
+  color: var(--c-muted);
+  max-height: 180px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@media (min-width: 1024px) {
+  .progress__bar {
+    display: none;
+  }
+  .progress__rail {
+    display: flex;
+  }
+}

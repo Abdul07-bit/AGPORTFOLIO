@@ -1,0 +1,199 @@
+.work {
+  position: relative;
+  z-index: var(--z-content);
+}
+
+.work__title {
+  font-size: clamp(3rem, 8.6vw, 9rem);
+  line-height: 0.84;
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+}
+.work__sub {
+  max-width: 18ch;
+  margin-top: 4px;
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.2vw, 2.1rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: var(--tracking-display);
+  color: var(--c-muted);
+}
+.work__hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.work__hint svg {
+  width: 14px;
+  height: 14px;
+  color: var(--c-red);
+  animation: hint-nudge 1.8s var(--ease-in-out) infinite;
+}
+@keyframes hint-nudge {
+  50% {
+    transform: translateX(6px);
+  }
+}
+
+.work__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.work__outro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+.work__outro-text {
+  max-width: 24ch;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.2vw, 2.2rem);
+  line-height: 1.1;
+  letter-spacing: var(--tracking-display);
+}
+
+/* HUD — counter, progress and arrows */
+.work__hud {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-inline: var(--gutter);
+}
+.work__count {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.work__bar {
+  position: relative;
+  flex: 1;
+  height: 1px;
+  min-width: 60px;
+  background: var(--c-border-strong);
+  overflow: hidden;
+}
+.work__bar span {
+  position: absolute;
+  inset: 0;
+  background: var(--c-red);
+  transform-origin: left;
+  transform: scaleX(0);
+}
+.work__current {
+  min-width: 14ch;
+  text-align: right;
+}
+.work__buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* ─── Cinematic (desktop) ─────────────────────────────────────────────── */
+
+.work[data-mode='cinematic'] .work__pin {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+.work[data-mode='cinematic'] .work__rail {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: clamp(48px, 6vw, 120px);
+  width: max-content;
+  height: 100%;
+  padding: calc(var(--nav-h) + 24px) clamp(80px, 10vw, 200px) 104px var(--gutter);
+  will-change: transform;
+}
+.work[data-mode='cinematic'] .work__intro {
+  flex: none;
+  width: max-content;
+}
+.work[data-mode='cinematic'] .work__track {
+  display: flex;
+  gap: clamp(32px, 4vw, 72px);
+  height: 100%;
+  max-height: 660px;
+}
+.work[data-mode='cinematic'] .work__panel {
+  flex: none;
+  width: min(72vw, 1120px);
+  height: 100%;
+}
+.work[data-mode='cinematic'] .work__outro {
+  flex: none;
+  width: min(30vw, 420px);
+}
+.work[data-mode='cinematic'] .work__hud {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 28px;
+  max-width: var(--max-w);
+  margin-inline: auto;
+}
+.work[data-mode='cinematic'] .work-card__art > .cover {
+  width: 110%;
+  margin-left: -5%;
+}
+
+/* ─── Native (touch, tablet, reduced motion) ───────────────────────────── */
+
+.work[data-mode='native'] {
+  padding-block: clamp(88px, 12vw, 140px) clamp(48px, 8vw, 96px);
+}
+.work[data-mode='native'] .work__pin {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.work[data-mode='native'] .work__rail {
+  display: contents;
+}
+.work[data-mode='native'] .work__intro {
+  order: 1;
+  padding-inline: var(--gutter);
+  max-width: var(--max-w);
+}
+.work[data-mode='native'] .work__hud {
+  order: 2;
+}
+.work[data-mode='native'] .work__track {
+  order: 3;
+  position: relative;
+  display: flex;
+  gap: 16px;
+  padding: 4px var(--gutter) 12px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--gutter);
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.work[data-mode='native'] .work__track::-webkit-scrollbar {
+  display: none;
+}
+.work[data-mode='native'] .work__panel {
+  flex: 0 0 min(86vw, 520px);
+  scroll-snap-align: start;
+}
+.work[data-mode='native'] .work__outro {
+  order: 4;
+  padding-inline: var(--gutter);
+}
+.work[data-mode='native'] .work__current {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .work[data-mode='native'] .work__hud {
+    gap: 14px;
+  }
+  .work__sub {
+    max-width: 22ch;
+  }
+}

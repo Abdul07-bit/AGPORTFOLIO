@@ -1,0 +1,75 @@
+/* ─── Design tokens ─────────────────────────────────────────────────────────
+   SIGNAL / SYSTEMS, dressed in old money: smoky soot black, parchment ivory,
+   antique gold for every signal (active states, highlights, progress, CTAs),
+   with a deep heritage green and a low ember glow for atmosphere.
+   Variable names keep their original roles: --c-red is the signal accent,
+   --c-silver the primary ink.
+   ───────────────────────────────────────────────────────────────────────── */
+
+:root {
+  color-scheme: dark;
+
+  /* Colour */
+  --c-bg: #0f0d0b;
+  --c-black: #080706;
+  --c-silver: #e8dfcc;
+  --c-muted: #9c907b;
+  --c-red: #c9a45c;
+  --c-red-soft: rgba(201, 164, 92, 0.14);
+  --c-green: #1d3a2e;
+  --c-ember: #a8432a;
+  --c-border: rgba(232, 223, 204, 0.13);
+  --c-border-strong: rgba(232, 223, 204, 0.26);
+  --c-glass: rgba(255, 255, 255, 0.035);
+  --c-faint: rgba(232, 223, 204, 0.06);
+
+  /* Type */
+  /* Engraved capitals for display, Garamond for editorial text, a typewriter for labels. */
+  --font-display: 'Cinzel Variable', Cinzel, 'Trajan Pro', Georgia, serif;
+  --font-serif: 'Cormorant Garamond Variable', 'Cormorant Garamond', Garamond, Georgia, serif;
+  --font-body: 'Inter Variable', Inter, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Courier Prime', 'Courier New', ui-monospace, monospace;
+
+  --fs-mega: clamp(3.4rem, 12.4vw, 13.5rem);
+  --fs-display: clamp(2.9rem, 9.2vw, 9.6rem);
+  --fs-h1: clamp(2.4rem, 6.4vw, 6.4rem);
+  --fs-h2: clamp(2rem, 4.4vw, 4.4rem);
+  --fs-h3: clamp(1.35rem, 2vw, 1.85rem);
+  --fs-lead: clamp(1.06rem, 1.35vw, 1.3rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-mono: 0.72rem;
+
+  --tracking-display: 0.01em;
+  --tracking-mono: 0.14em;
+
+  /* Layout */
+  --gutter: clamp(16px, 4vw, 56px);
+  --max-w: 1600px;
+  --nav-h: 72px;
+  --radius-s: 6px;
+  --radius-m: 14px;
+  --radius-l: 20px;
+
+  /* Motion — keep in sync with src/lib/motion.ts */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 220ms;
+  --dur-base: 480ms;
+  --dur-slow: 900ms;
+
+  /* Layers */
+  --z-grain: 1;
+  --z-content: 2;
+  --z-progress: 40;
+  --z-nav: 50;
+  --z-menu: 60;
+  --z-cursor: 90;
+  --z-intro: 100;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --nav-h: 64px;
+  }
+}

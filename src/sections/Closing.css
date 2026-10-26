@@ -1,0 +1,82 @@
+.closing {
+  position: relative;
+  z-index: var(--z-content);
+  padding-top: clamp(120px, 16vw, 220px);
+  padding-bottom: clamp(40px, 5vw, 64px);
+  overflow: hidden;
+  background: radial-gradient(80% 60% at 50% 100%, rgba(201, 164, 92, 0.08), transparent 70%);
+}
+
+.closing__signal {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: clamp(90px, 13vw, 180px);
+  background: var(--c-border);
+}
+.closing__signal span {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent, var(--c-red));
+  transform-origin: top;
+}
+.closing__signal::after {
+  content: '';
+  position: absolute;
+  left: -3px;
+  bottom: -3px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--c-red);
+  box-shadow: 0 0 16px 3px rgba(201, 164, 92, 0.5);
+}
+
+.closing__inner {
+  display: grid;
+  gap: clamp(24px, 4vw, 48px);
+}
+.closing__kicker {
+  justify-self: center;
+  text-align: center;
+  color: var(--c-muted);
+}
+
+.closing__name {
+  display: grid;
+  justify-items: center;
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 13vw, 14rem);
+  font-weight: 600;
+  line-height: 0.8;
+  letter-spacing: var(--tracking-display);
+  color: var(--c-silver);
+  user-select: none;
+}
+.closing__word {
+  display: flex;
+}
+.closing__word:last-child {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(232, 223, 204, 0.5);
+}
+.closing__mask {
+  display: inline-block;
+  padding-bottom: 0.04em;
+  /* Clip only the bottom edge so tight letter-spacing never crops glyph sides. */
+  clip-path: inset(-50% -40% 0 -40%);
+}
+.closing__char {
+  display: inline-block;
+  will-change: transform;
+}
+
+.closing__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: clamp(24px, 4vw, 48px);
+}

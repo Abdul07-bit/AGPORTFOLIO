@@ -1,0 +1,107 @@
+.journey__grid {
+  display: grid;
+  gap: 56px;
+}
+.journey__head {
+  display: grid;
+  gap: 22px;
+  align-content: start;
+}
+.journey__title {
+  font-size: clamp(2.6rem, 6vw, 6rem);
+  line-height: 0.88;
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+}
+.journey__lead {
+  max-width: 36ch;
+  color: var(--c-muted);
+  font-size: var(--fs-lead);
+}
+
+.journey__track {
+  position: relative;
+  padding-left: 36px;
+}
+.journey__list {
+  display: grid;
+  gap: clamp(40px, 5vw, 64px);
+}
+.journey__line {
+  position: absolute;
+  left: 5px;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--c-border-strong);
+}
+.journey__line-fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, var(--c-red), rgba(201, 164, 92, 0.4));
+  transform-origin: top;
+}
+
+.journey__item {
+  --dot-scale: 0;
+  position: relative;
+  display: grid;
+  gap: 8px;
+}
+.journey__dot {
+  position: absolute;
+  left: -36px;
+  top: 4px;
+  width: 11px;
+  height: 11px;
+  border: 1px solid var(--c-muted);
+  border-radius: 50%;
+  background: var(--c-bg);
+}
+.journey__dot::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: var(--c-red);
+  transform: scale(var(--dot-scale));
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.journey__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+}
+.journey__item-title {
+  margin-top: 4px;
+  font-size: clamp(1.5rem, 2.6vw, 2.4rem);
+  line-height: 1.02;
+  letter-spacing: var(--tracking-display);
+}
+.journey__desc {
+  max-width: 56ch;
+  color: var(--c-muted);
+}
+.journey__link {
+  justify-self: start;
+  margin-top: 4px;
+  color: var(--c-silver);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .journey__item {
+    --dot-scale: 1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .journey__grid {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(48px, 7vw, 120px);
+  }
+  .journey__head {
+    position: sticky;
+    top: calc(var(--nav-h) + 32px);
+    align-self: start;
+  }
+}

@@ -1,0 +1,260 @@
+.hero {
+  position: relative;
+  z-index: var(--z-content);
+  height: 100svh;
+  min-height: 640px;
+  overflow: clip;
+}
+
+/* Background hairlines with registration marks */
+.hero__grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.hero__grid span {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(232, 223, 204, 0.08) 20%, rgba(232, 223, 204, 0.08) 80%, transparent);
+}
+.hero__grid span:first-child {
+  top: 30%;
+}
+.hero__grid span:last-child {
+  top: 72%;
+}
+
+.hero__scene-wrap {
+  position: absolute;
+  inset: 2% -4% 0 32%;
+  will-change: transform;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  height: 100%;
+  padding-top: calc(var(--nav-h) + clamp(12px, 3vh, 32px));
+  padding-bottom: clamp(76px, 11vh, 112px);
+  pointer-events: none;
+}
+.hero__inner a,
+.hero__inner button {
+  pointer-events: auto;
+}
+
+.hero__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.hero__eyebrow {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.hero__eyebrow > span:last-child {
+  display: grid;
+  gap: 4px;
+}
+.hero__eyebrow-main {
+  color: var(--c-silver);
+}
+.hero__eyebrow-dot {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  margin-top: 0.45em;
+  border-radius: 50%;
+  background: var(--c-red);
+  box-shadow: 0 0 0 0 rgba(201, 164, 92, 0.6);
+  animation: signal-pulse 2.4s var(--ease-out) infinite;
+}
+@keyframes signal-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(201, 164, 92, 0.55);
+  }
+  70%,
+  100% {
+    box-shadow: 0 0 0 10px rgba(201, 164, 92, 0);
+  }
+}
+
+.hero__readout {
+  display: grid;
+  gap: 4px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.hero__title {
+  grid-row: 3;
+  margin-bottom: clamp(24px, 4.5vh, 52px);
+  font-size: min(12.4vw, 9.2rem);
+  font-weight: 500;
+  line-height: 0.86;
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  color: var(--c-silver);
+}
+.hero__line {
+  will-change: transform;
+}
+.hero__period {
+  color: var(--c-red);
+}
+
+.hero__bottom {
+  grid-row: 4;
+  display: grid;
+  gap: 28px;
+  align-items: end;
+}
+
+.hero__lead {
+  max-width: 40ch;
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+  color: var(--c-muted);
+}
+
+.hero__ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero__availability {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--c-silver);
+}
+.hero__availability .hero__eyebrow-dot {
+  margin-top: 0;
+  background: #3ddc84;
+  animation: none;
+}
+
+/* Scroll indicator */
+.hero__scroll {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-top: 8px;
+  transform: translateX(-50%);
+  color: var(--c-muted);
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.hero__scroll:hover {
+  color: var(--c-silver);
+}
+.hero__scroll-line {
+  position: relative;
+  display: block;
+  width: 1px;
+  height: clamp(36px, 6vh, 64px);
+  background: var(--c-border-strong);
+  overflow: hidden;
+}
+.hero__scroll-dot {
+  position: absolute;
+  left: -2px;
+  top: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--c-red);
+  animation: scroll-signal 2.2s var(--ease-in-out) infinite;
+}
+@keyframes scroll-signal {
+  0% {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(70px);
+    opacity: 0;
+  }
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 767px) {
+  .hero {
+    min-height: 600px;
+  }
+  .hero__scene-wrap {
+    inset: 9% -45% 34% -15%;
+  }
+  .hero__readout {
+    display: none;
+  }
+  .hero__ctas .magnetic,
+  .hero__ctas .btn {
+    width: 100%;
+  }
+  .hero__ctas {
+    display: grid;
+  }
+  .hero__lead {
+    font-size: 1rem;
+  }
+  .hero__scroll {
+    display: none;
+  }
+  .hero__inner {
+    padding-bottom: 32px;
+  }
+}
+
+/* Short phones: the headline needs the full height, so the core moves to the
+   upper corner and steps back. (Opacity sits on the inner element because the
+   wrapper's opacity is animated by the entrance.) */
+@media (max-width: 767px) and (max-height: 720px) {
+  .hero__scene-wrap {
+    inset: 0 -55% 52% 25%;
+  }
+  .hero-scene {
+    opacity: 0.6;
+  }
+}
+
+/* ─── Tablet & up ─── */
+@media (min-width: 768px) {
+  .hero__title {
+    font-size: clamp(3rem, 8.5vw, 9.4rem);
+  }
+  .hero__line--1 {
+    padding-left: 1.05em;
+  }
+  .hero__bottom {
+    grid-template-columns: minmax(0, 40ch) auto;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero__scene-wrap {
+    inset: 4% -18% 18% 18%;
+  }
+}
+
+@media (max-height: 760px) and (min-width: 768px) {
+  .hero__title {
+    font-size: clamp(3rem, 7.4vw, 7.8rem);
+  }
+}

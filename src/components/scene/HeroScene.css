@@ -1,0 +1,22 @@
+.hero-scene {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-scene__fallback,
+.hero-scene .signal-canvas {
+  position: absolute !important;
+  inset: 0;
+  transition: opacity 1.4s var(--ease-out);
+}
+
+.hero-scene .signal-canvas {
+  opacity: 0;
+}
+
+.hero-scene[data-ready='true'] .signal-canvas {
+  opacity: 1;
+}
+.hero-scene[data-ready='true'] .hero-scene__fallback {
+  opacity: 0;
+}

@@ -1,0 +1,38 @@
+.not-found {
+  position: relative;
+  z-index: var(--z-content);
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: 24px;
+  min-height: 100svh;
+  padding-top: var(--nav-h);
+  padding-bottom: 64px;
+}
+.not-found__art {
+  position: absolute;
+  right: -10%;
+  top: 50%;
+  width: min(70vw, 720px);
+  aspect-ratio: 1;
+  transform: translateY(-50%);
+  opacity: 0.35;
+  pointer-events: none;
+}
+.not-found__title {
+  position: relative;
+  max-width: 14ch;
+  font-size: clamp(2.6rem, 7vw, 6.6rem);
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+.not-found__text {
+  position: relative;
+  font-size: var(--fs-lead);
+}
+.not-found__actions {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}

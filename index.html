@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <!-- %SEO% -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <style>
+      /* Critical boot styles — keep the first paint dark and branded before JS loads. */
+      html, body { background: #080706; margin: 0; }
+      .boot {
+        position: fixed; inset: 0; z-index: 9999; background: #080706; color: #9c907b;
+        font: 500 11px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        letter-spacing: 0.14em; text-transform: uppercase;
+        display: grid; place-items: center;
+        /* Fail-safe: never cover the page if the app cannot start. */
+        animation: boot-out 0.4s ease 6s forwards;
+      }
+      .boot__core { width: 6px; height: 6px; border-radius: 50%; background: #e8dfcc; box-shadow: 0 0 24px 4px rgba(232, 223, 204, 0.25); }
+      @keyframes boot-out { to { opacity: 0; visibility: hidden; } }
+    </style>
+  </head>
+  <body>
+    <div class="boot" id="boot" aria-hidden="true">
+      <div class="boot__core"></div>
+    </div>
+    <div id="root"></div>
+    <noscript>
+      <main style="font-family: system-ui, sans-serif; color: #e8dfcc; background: #0f0d0b; padding: 48px 24px; max-width: 720px; margin: 0 auto; line-height: 1.6">
+        <h1>Abdul Gaffar — AI Engineer, Software Developer &amp; Founder</h1>
+        <p>From intelligent automation and data systems to full-stack digital products, I turn complex ideas into practical, scalable experiences.</p>
+        <h2>Selected work</h2>
+        <ul>
+          <li><a style="color: #e8dfcc" href="/work/formlaw">FormLaw — Agentic AI Legal Intelligence &amp; Case Management</a></li>
+          <li><a style="color: #e8dfcc" href="/work/datafusion">DataFusion — B2B Data Fusion &amp; Quality Intelligence</a></li>
+          <li><a style="color: #e8dfcc" href="/work/rizan-jewellery">Rizan Jewellery — E-commerce Experience</a></li>
+          <li><a style="color: #e8dfcc" href="/work/vkt-shopping-centre">VKT Shopping Centre — Digital Storefront</a></li>
+          <li><a style="color: #e8dfcc" href="/work/smartautoflex">SmartAutoFlex — Building Intelligent Business Automation</a></li>
+          <li><a style="color: #e8dfcc" href="/work/ai-ticketing-assistant">AI Ticketing Assistant — Conversational Support</a></li>
+        </ul>
+        <p>This site uses JavaScript for its interactive experience. Please enable it to see the full portfolio.</p>
+      </main>
+      <style>.boot { display: none !important; }</style>
+    </noscript>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

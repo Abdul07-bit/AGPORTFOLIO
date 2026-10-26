@@ -1,0 +1,62 @@
+.float-icons {
+  --scroll: 0;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Outer element: scroll parallax (individual `translate`, so it never fights the drift). */
+.float-icons__item {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--size);
+  height: var(--size);
+  translate: 0 calc(var(--scroll) * var(--depth) * -1px);
+}
+.float-icons__item[data-tone='gold'] {
+  color: var(--c-red);
+  opacity: 0.13;
+}
+.float-icons__item[data-tone='ivory'] {
+  color: var(--c-silver);
+  opacity: 0.07;
+}
+
+/* Inner element: slow, endless drift. */
+.float-icons__drift {
+  display: block;
+  width: 100%;
+  height: 100%;
+  animation: icon-drift var(--duration) ease-in-out var(--delay) infinite alternate;
+  will-change: transform;
+}
+.float-icons__drift svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes icon-drift {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(-8deg);
+  }
+  50% {
+    transform: translate3d(36px, -48px, 0) rotate(6deg);
+  }
+  100% {
+    transform: translate3d(-24px, -96px, 0) rotate(14deg);
+  }
+}
+
+/* Fewer, smaller icons on phones. */
+@media (max-width: 767px) {
+  .float-icons__item:nth-child(n + 9) {
+    display: none;
+  }
+  .float-icons__item {
+    width: calc(var(--size) * 0.75);
+    height: calc(var(--size) * 0.75);
+  }
+}

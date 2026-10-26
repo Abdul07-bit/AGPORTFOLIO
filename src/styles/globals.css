@@ -1,0 +1,615 @@
+@import './tokens.css';
+
+/* ─── Reset ───────────────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100svh;
+  background:
+    radial-gradient(90% 60% at 0% 0%, rgba(29, 58, 46, 0.35), transparent 60%),
+    radial-gradient(70% 50% at 100% 100%, rgba(168, 67, 42, 0.08), transparent 70%),
+    radial-gradient(120% 70% at 85% -10%, rgba(201, 164, 92, 0.06), transparent 60%),
+    linear-gradient(180deg, var(--c-black) 0%, var(--c-bg) 32%, var(--c-bg) 100%);
+  background-color: var(--c-bg);
+  color: var(--c-silver);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: var(--tracking-display);
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--c-red);
+  color: var(--c-black);
+}
+
+:focus-visible {
+  outline: 2px solid var(--c-red);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* Backstop against horizontal overflow (e.g. hidden tooltips, reveal offsets).
+   'clip' rather than 'hidden' so sticky and pinned elements keep working, and on
+   <main> rather than <body> because mobile browsers widen the layout viewport
+   to fit overflow even when the body clips it. */
+#main {
+  overflow-x: clip;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+/* Editorial serif for leads, summaries and subtitles. font-size-adjust keeps
+   Cormorant's small x-height optically level with the Inter body text.
+   (`html` prefix: wins over component styles that set their own font.) */
+html .lead,
+html .hero__lead,
+html .about__bio,
+html .approach__lead,
+html .approach__stage-body,
+html .founder__lead,
+html .journey__lead,
+html .case-files__lead,
+html .contact__lead,
+html .capabilities__intro,
+html .work__sub,
+html .work__outro-text,
+html .work-card__subtitle,
+html .case__summary,
+html .case__lead,
+html .case__text,
+html .case__subtitle,
+html .case__next-subtitle,
+html .case-row__subtitle {
+  font-family: var(--font-serif);
+  font-size-adjust: 0.5;
+  font-style: italic;
+  letter-spacing: 0.005em;
+}
+
+/* Gilded rule under every section label */
+.section-label::after {
+  background: linear-gradient(90deg, var(--c-red), transparent);
+}
+
+/* ─── Utilities ───────────────────────────────────────────────────────── */
+
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  font-weight: 500;
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+.muted {
+  color: var(--c-muted);
+}
+
+.red {
+  color: var(--c-red);
+}
+
+/* Section label — "(02) Selected work" */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9em;
+  color: var(--c-muted);
+}
+.section-label__index {
+  color: var(--c-red);
+}
+.section-label::after {
+  content: '';
+  width: 48px;
+  height: 1px;
+  background: var(--c-border-strong);
+}
+
+/* Masked line used by AnimatedText */
+.line-mask {
+  display: block;
+  overflow: hidden;
+  /* room for descenders and tight leading */
+  padding-bottom: 0.08em;
+  margin-bottom: -0.08em;
+}
+.line-mask__inner {
+  display: block;
+  will-change: transform;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+/* Status chip */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.5em 0.85em;
+  border: 1px solid var(--c-border-strong);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--c-silver);
+  white-space: nowrap;
+}
+.chip::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--chip-dot, var(--c-muted));
+}
+.chip[data-kind='live'] {
+  --chip-dot: #3ddc84;
+}
+.chip[data-kind='demo'],
+.chip[data-kind='prototype'] {
+  --chip-dot: #f5c451;
+}
+.chip[data-kind='founder'] {
+  --chip-dot: var(--c-red);
+}
+.chip[data-kind='concept'] {
+  --chip-dot: var(--c-muted);
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.35em 0.7em;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-s);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+}
+
+/* ─── Buttons ─────────────────────────────────────────────────────────── */
+
+.btn {
+  --btn-bg: transparent;
+  --btn-fg: var(--c-silver);
+  --btn-border: var(--c-border-strong);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85em;
+  min-height: 52px;
+  padding: 0 1.5em;
+  border: 1px solid var(--btn-border);
+  border-radius: 999px;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  isolation: isolate;
+  transition:
+    color var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out),
+    background-color var(--dur-base) var(--ease-out);
+}
+.btn::before {
+  /* fill that rises on hover */
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--btn-hover-bg, var(--c-silver));
+  transform: translateY(101%);
+  transition: transform var(--dur-base) var(--ease-out);
+  border-radius: inherit;
+}
+.btn:hover::before,
+.btn:focus-visible::before {
+  transform: translateY(0);
+}
+.btn:hover,
+.btn:focus-visible {
+  color: var(--btn-hover-fg, var(--c-black));
+  border-color: var(--btn-hover-border, var(--c-silver));
+}
+.btn svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.btn:hover svg[data-arrow='right'] {
+  transform: translateX(3px);
+}
+.btn:hover svg[data-arrow='up-right'] {
+  transform: translate(2px, -2px);
+}
+.btn:hover svg[data-arrow='down'] {
+  transform: translateY(3px);
+}
+
+.btn--primary {
+  --btn-bg: var(--c-red);
+  --btn-fg: var(--c-black);
+  --btn-border: var(--c-red);
+  --btn-hover-bg: var(--c-silver);
+  --btn-hover-border: var(--c-silver);
+}
+
+.btn--small {
+  min-height: 40px;
+  padding: 0 1.1em;
+  font-size: 0.68rem;
+}
+
+.btn[disabled],
+.btn[aria-disabled='true'] {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Icon-only circular button */
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--c-border-strong);
+  border-radius: 50%;
+  color: var(--c-silver);
+  transition:
+    background-color var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+.icon-btn:hover:not(:disabled) {
+  background: var(--c-silver);
+  color: var(--c-black);
+  border-color: var(--c-silver);
+}
+.icon-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+.icon-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Wrapper used by <Magnetic> */
+.magnetic {
+  display: inline-flex;
+  will-change: transform;
+}
+
+/* Underlined text link */
+.text-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding-block: 0.25em;
+}
+.text-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.35;
+  transform-origin: right;
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    opacity var(--dur-base) var(--ease-out);
+}
+.text-link:hover::after,
+.text-link:focus-visible::after {
+  opacity: 1;
+  background: var(--c-red);
+  animation: link-sweep var(--dur-slow) var(--ease-out);
+}
+@keyframes link-sweep {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  100% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+.text-link svg {
+  width: 1em;
+  height: 1em;
+}
+
+/* External link marker — distinguishes off-site links from internal navigation */
+.external-mark {
+  display: inline-block;
+  width: 0.9em;
+  height: 0.9em;
+  vertical-align: -0.05em;
+}
+
+/* ─── Section scaffolding ─────────────────────────────────────────────── */
+
+.section {
+  position: relative;
+  z-index: var(--z-content);
+  padding-block: clamp(96px, 14vw, 200px);
+}
+
+.section-head {
+  display: grid;
+  gap: clamp(20px, 3vw, 36px);
+  margin-bottom: clamp(48px, 7vw, 112px);
+}
+
+.section-title {
+  font-size: var(--fs-h1);
+  text-transform: uppercase;
+}
+
+.lead {
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+  color: var(--c-muted);
+  max-width: 46ch;
+}
+
+.rule {
+  height: 1px;
+  background: var(--c-border);
+  border: 0;
+}
+
+/* Fine technical corner ticks, used on frames */
+.corners {
+  position: relative;
+}
+.corners::before,
+.corners::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--c-muted);
+  pointer-events: none;
+  z-index: 3;
+}
+.corners::before {
+  top: -7px;
+  left: -7px;
+  border-right: 0;
+  border-bottom: 0;
+}
+.corners::after {
+  bottom: -7px;
+  right: -7px;
+  border-left: 0;
+  border-top: 0;
+}
+
+/* Skip link */
+.skip-link {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: calc(var(--z-intro) + 1);
+  padding: 12px 18px;
+  background: var(--c-silver);
+  color: var(--c-black);
+  border-radius: var(--radius-s);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transform: translateY(-160%);
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* Film grain (static — a moving full-screen layer costs too much to composite) + ambient light */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-grain);
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Cinematic vignette — smoky, low-lit edges */
+.vignette {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-grain);
+  pointer-events: none;
+  background: radial-gradient(ellipse 120% 90% at 50% 45%, transparent 55%, rgba(4, 3, 2, 0.6) 100%);
+}
+
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.ambient__light {
+  position: absolute;
+  width: 70vmax;
+  height: 70vmax;
+  left: calc(50% - 35vmax);
+  top: calc(50% - 35vmax);
+  border-radius: 50%;
+  will-change: transform, opacity;
+}
+.ambient__light--silver {
+  background: radial-gradient(closest-side, rgba(232, 223, 204, 0.07), transparent);
+  transform: translate(30vw, -30vh);
+}
+.ambient__light--red {
+  background: radial-gradient(closest-side, rgba(201, 164, 92, 0.075), transparent);
+  transform: translate(35vw, -20vh);
+}
+
+/* Fine vertical grid lines in the background */
+.grid-lines {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.grid-lines span {
+  border-left: 1px solid rgba(232, 223, 204, 0.035);
+}
+.grid-lines span:last-child {
+  border-right: 1px solid rgba(232, 223, 204, 0.035);
+}
+
+/* Custom cursor is enabled on fine pointers only (see Cursor.tsx) */
+html.has-custom-cursor,
+html.has-custom-cursor a,
+html.has-custom-cursor button,
+html.has-custom-cursor [role='button'],
+html.has-custom-cursor label {
+  cursor: none;
+}
+html.has-custom-cursor input,
+html.has-custom-cursor textarea {
+  cursor: text;
+}
+
+/* ─── Reduced motion ──────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

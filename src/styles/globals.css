@@ -126,7 +126,6 @@ html .hero__lead,
 html .about__bio,
 html .approach__lead,
 html .approach__stage-body,
-html .founder__lead,
 html .journey__lead,
 html .case-files__lead,
 html .contact__lead,
@@ -253,9 +252,6 @@ html .case-row__subtitle {
 .chip[data-kind='demo'],
 .chip[data-kind='prototype'] {
   --chip-dot: #f5c451;
-}
-.chip[data-kind='founder'] {
-  --chip-dot: var(--c-red);
 }
 .chip[data-kind='concept'] {
   --chip-dot: var(--c-muted);

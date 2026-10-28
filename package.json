@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Immersive personal portfolio for Abdul Gaffar — AI & Data Science engineer, software developer and founder of SmartAutoFlex.",
+  "description": "Immersive personal portfolio for Abdul Gaffar — AI & Data Science engineer and software developer.",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

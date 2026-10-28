@@ -287,7 +287,7 @@ try {
     const mode = await page.locator('#work').getAttribute('data-mode')
     record('reduced motion: gallery falls back to native mode', mode === 'native', `mode=${mode}`)
     let hidden = 0
-    for (const id of ['about', 'approach', 'stack', 'founder', 'journey', 'case-files', 'contact']) {
+    for (const id of ['about', 'approach', 'stack', 'journey', 'case-files', 'contact']) {
       await scrollToSelector(page, `#${id}`)
       await page.waitForTimeout(150)
       hidden += await page.evaluate(() =>

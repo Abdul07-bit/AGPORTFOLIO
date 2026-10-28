@@ -59,11 +59,11 @@ export const journey: JourneyEntry[] = [
     description: 'Building REST APIs with FastAPI.',
   },
   {
-    kind: 'Founder',
+    kind: 'Project',
     title: 'SmartAutoFlex',
-    context: 'AI automation startup',
+    context: 'AI chatbots, voice agents & workflow automation',
     when: 'Since Dec 2025',
-    description: 'Founded an AI automation startup for businesses: chatbots and voice agents for support and bookings, and n8n / FastAPI automation workflows.',
+    description: 'Built AI chatbots and voice agents for customer support and bookings, and automation workflows with n8n and FastAPI.',
     href: '/work/smartautoflex',
   },
   {
@@ -132,30 +132,3 @@ export const journey: JourneyEntry[] = [
     description: 'Learning Japanese — currently at N5 level.',
   },
 ]
-
-export const founderNeeds = [
-  { id: 'enquiries', label: 'Repeated enquiries', detail: 'The same questions, answered by hand, all day.' },
-  { id: 'bookings', label: 'Bookings & calls', detail: 'Reservations taken over the phone and copied into tools.' },
-  { id: 'data', label: 'Manual data entry', detail: 'Information re-typed between systems.' },
-  { id: 'visibility', label: 'No single view', detail: 'Operations spread across chats, sheets and inboxes.' },
-] as const
-
-export const founderLayers = [
-  { id: 'ai', label: 'AI', detail: 'LLMs · chatbots' },
-  { id: 'apps', label: 'Applications', detail: 'Websites · apps' },
-  { id: 'automation', label: 'Automation', detail: 'n8n · workflows' },
-  { id: 'infra', label: 'Infrastructure', detail: 'Cloud · CI/CD' },
-] as const
-
-export const founderStages = [
-  { index: '01', title: 'Understand', body: 'Map the real workflow — the repetitive steps, the hand-offs and the moments where customers wait.' },
-  { index: '02', title: 'Automate', body: 'Connect AI models, chat and workflow tools so routine work runs on its own, with people in control.' },
-  { index: '03', title: 'Scale', body: 'Package what works into reliable, observable products that can serve more businesses.' },
-] as const
-
-export const founderPreviews = [
-  { title: 'Voice agents', detail: 'AI voice agents for support calls and bookings.', status: 'Built' },
-  { title: 'AI chatbots', detail: 'Conversational support for customer questions.', status: 'Built' },
-  { title: 'Workflow automation', detail: 'n8n and FastAPI flows that move data between tools.', status: 'Built' },
-  { title: 'Operations dashboard', detail: 'One view of what the automations are doing.', status: 'Concept' },
-] as const

@@ -1,7 +1,7 @@
 // Shared content types. Data files stay free of runtime imports so that
 // vite.config.ts can read them at build time (sitemap, JSON-LD, meta tags).
 
-export type ProjectStatusKind = 'live' | 'demo' | 'prototype' | 'founder' | 'concept'
+export type ProjectStatusKind = 'live' | 'demo' | 'prototype' | 'concept'
 
 export interface ProjectStatus {
   kind: ProjectStatusKind

@@ -1,9 +1,7 @@
-import { ArrowDownRight } from 'lucide-react'
-import { useRef, type MouseEvent } from 'react'
+import { useRef } from 'react'
 import { AnimatedText } from '../components/motion/AnimatedText'
 import { profile } from '../data/profile'
 import { EASE, MEDIA, gsap, useGSAP } from '../lib/gsap'
-import { scrollToTarget } from '../lib/scroll'
 import './About.css'
 
 const { portrait, education } = profile
@@ -36,11 +34,6 @@ export function About() {
     },
     { scope: rootRef },
   )
-
-  const toFounder = (event: MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault()
-    scrollToTarget('#founder')
-  }
 
   return (
     <section id="about" ref={rootRef} className="section about" aria-labelledby="about-title">
@@ -144,15 +137,6 @@ export function About() {
                     </li>
                   ))}
                 </ul>
-              </dd>
-            </div>
-            <div className="about__fact">
-              <dt className="mono">Founder</dt>
-              <dd>
-                <a href="#founder" className="text-link" onClick={toFounder}>
-                  SmartAutoFlex <ArrowDownRight aria-hidden="true" />
-                </a>
-                <span className="muted">AI automation startup · since Dec 2025</span>
               </dd>
             </div>
           </dl>

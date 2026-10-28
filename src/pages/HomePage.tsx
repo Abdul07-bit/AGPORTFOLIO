@@ -13,7 +13,6 @@ import { CaseFiles } from '../sections/CaseFiles'
 import { Closing } from '../sections/Closing'
 import { Contact } from '../sections/Contact'
 import { EngineeringPhilosophy } from '../sections/EngineeringPhilosophy'
-import { FounderSection } from '../sections/FounderSection'
 import { Hero } from '../sections/Hero'
 import { Journey } from '../sections/Journey'
 
@@ -117,7 +116,6 @@ export function HomePage() {
       <About />
       <EngineeringPhilosophy />
       <Capabilities />
-      <FounderSection />
       <Journey />
       <CaseFiles />
       <Contact />

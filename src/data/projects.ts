@@ -409,18 +409,18 @@ export const projects: Project[] = [
     slug: 'smartautoflex',
     index: '05',
     name: 'SmartAutoFlex',
-    title: 'SmartAutoFlex — Building Intelligent Business Automation',
-    subtitle: 'Building Intelligent Business Automation',
-    type: 'Founder · AI automation startup',
-    status: { kind: 'founder', label: 'Founder · since Dec 2025' },
-    categories: ['AI automation', 'Voice & chat agents', 'Founder-led'],
+    title: 'SmartAutoFlex — AI Chatbots, Voice Agents & Workflow Automation',
+    subtitle: 'AI Chatbots, Voice Agents & Workflow Automation',
+    type: 'AI automation project',
+    status: { kind: 'live', label: 'Live website' },
+    categories: ['AI automation', 'Voice & chat agents', 'Workflow automation'],
     summary:
-      'The AI automation startup I founded in December 2025 — AI chatbots and voice agents for customer support and bookings, and automation workflows built with n8n, FastAPI and AI tools.',
+      'AI chatbots and voice agents for customer support and bookings, and automation workflows built with n8n, FastAPI and AI tools.',
     cover: 'smartautoflex',
     theme: { accent: '#c9a45c', surface: '#0C0D10', ink: '#e8dfcc' },
-    role: 'Founder — product, AI & DevOps',
+    role: 'Product, AI & DevOps engineering',
     overview:
-      'SmartAutoFlex is where I connect software engineering with real business problems. It builds AI chatbots and voice agents that handle customer support and bookings, and automation workflows that move routine work off people’s desks — using n8n, FastAPI and AI models. Its website offers AI agents, websites, online stores, mobile apps and custom software for growing businesses.',
+      'SmartAutoFlex is where I connect software engineering with real business problems. It covers AI chatbots and voice agents that handle customer support and bookings, and automation workflows that move routine work off people’s desks — using n8n, FastAPI and AI models. Its website offers AI agents, websites, online stores, mobile apps and custom software for growing businesses.',
     problem:
       'Many businesses repeat the same operational work every day: answering the same questions, taking bookings, moving data between tools. Most cannot justify a custom software team to fix it — but the tools to automate much of it now exist.',
     goals: [
@@ -430,7 +430,7 @@ export const projects: Project[] = [
       'Build the websites, applications and integrations that tie it together.',
     ],
     contribution: [
-      'Founded SmartAutoFlex in December 2025 and set its product direction.',
+      'Started SmartAutoFlex in December 2025 and defined what it would build.',
       'Built AI chatbots and voice agents for customer support and bookings.',
       'Developed automation workflows using n8n, FastAPI and AI tools.',
       'Brought DevOps practice to delivery — Docker, Git/GitHub and AWS.',
@@ -471,7 +471,7 @@ export const projects: Project[] = [
       },
       {
         title: 'Label concepts as concepts',
-        detail: 'An early-stage company earns trust by being precise about what is built, what is offered and what is still an idea.',
+        detail: 'Being precise about what is built, what is offered and what is still an idea is what makes a project trustworthy.',
       },
       {
         title: 'Automation needs an off switch',

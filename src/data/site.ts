@@ -3,7 +3,7 @@
 // VITE_SITE_URL environment variable so no domain is hard-coded here.
 
 export const site = {
-  title: 'Abdul Gaffar — AI Engineer, Software Developer & Founder',
+  title: 'Abdul Gaffar — AI Engineer & Software Developer',
   shortTitle: 'Abdul Gaffar',
   description:
     "Explore Abdul Gaffar's work across AI, software engineering, data systems, automation, cloud technologies, and digital product development.",

@@ -22,8 +22,6 @@ export interface Profile {
   social: SocialLink[]
   /** Optional availability line in the hero. Keep null unless you will keep it accurate. */
   availability: string | null
-  /** Public SmartAutoFlex website. When null, CTAs open the SmartAutoFlex case study instead. */
-  smartAutoFlexUrl: string | null
   /** Place a real resume at public/resume.pdf — the download button appears automatically. */
   resume: { path: string; downloadName: string }
   location: string
@@ -59,7 +57,6 @@ export const profile: Profile = {
   ],
 
   availability: null,
-  smartAutoFlexUrl: 'https://smartautoflex.vercel.app/',
 
   resume: {
     path: '/resume.pdf',
@@ -80,7 +77,7 @@ export const profile: Profile = {
     alt: 'Portrait of Abdul Gaffar in a dark pinstripe three-piece suit, white shirt and black tie.',
   },
 
-  bio: "I'm an AI & Data Science engineer interested in building software that solves real problems. My work brings together full-stack development, intelligent automation, data processing, and cloud-native engineering. Alongside technical projects, I am building SmartAutoFlex to explore how these technologies can create useful digital products for businesses.",
+  bio: "I'm an AI & Data Science engineer interested in building software that solves real problems. My work brings together full-stack development, intelligent automation, data processing, and cloud-native engineering. I enjoy turning these technologies into useful digital products for real businesses.",
 
   education: {
     degree: 'B.Tech in Artificial Intelligence & Data Science',

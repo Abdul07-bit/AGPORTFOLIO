@@ -47,11 +47,10 @@ Everything personal lives in **`src/data/profile.ts`**. Anything left `null` is 
 | 3 | **Resume PDF** | Add `public/resume.pdf` | No download button. It's detected at build time, so rebuild (or restart `npm run dev`) after adding it. |
 | 4 | **Production URL** | `VITE_SITE_URL` in `.env.local` or your host's env settings | No canonical URL, no absolute Open Graph URLs, no `sitemap.xml` (the build prints a warning). |
 | 5 | **Form endpoint** (optional) | `VITE_CONTACT_ENDPOINT` | The form falls back to opening the visitor's email app (needs #1). |
-| 6 | **SmartAutoFlex website** (optional) | `profile.smartAutoFlexUrl` | "Explore SmartAutoFlex" opens the SmartAutoFlex case study instead. |
-| 7 | **DataFusion demo** | `src/data/projects.ts` → DataFusion `links[0].verified` | `https://datafusiondemo.netlify.app/` returned **Netlify 404 (site not found) on 25 Oct 2026**, so it's hidden. Set `verified: true` once it's live again. |
-| 8 | **CGPA** | `profile.education.cgpa` | Shown as 8.05 / 10. Confirm it against your latest record, or set it to `null` to hide it. |
-| 9 | **Your role on each project** | `contribution`, `role` and `lessons` in `projects.ts` | Written from features verified on the live sites. Check that they describe what *you* did. |
-| 10 | **Availability line** (optional) | `profile.availability` | Not shown. Only set it if you'll keep it accurate. |
+| 6 | **DataFusion demo** | `src/data/projects.ts` → DataFusion `links[0].verified` | `https://datafusiondemo.netlify.app/` returned **Netlify 404 (site not found) on 25 Oct 2026**, so it's hidden. Set `verified: true` once it's live again. |
+| 7 | **CGPA** | `profile.education.cgpa` | Shown as 8.05 / 10. Confirm it against your latest record, or set it to `null` to hide it. |
+| 8 | **Your role on each project** | `contribution`, `role` and `lessons` in `projects.ts` | Written from features verified on the live sites. Check that they describe what *you* did. |
+| 9 | **Availability line** (optional) | `profile.availability` | Not shown. Only set it if you'll keep it accurate. |
 
 In development, dashed yellow "Dev note" boxes in the contact section list what's still missing. They never appear in production builds.
 
@@ -105,7 +104,7 @@ This portfolio deliberately avoids invented claims: no fake metrics, clients, aw
 
 - **Rizan Jewellery** and **VKT Shopping Centre**: features and technology were verified against the live sites (October 2026), and the screenshots are real captures. The VKT shop page was **not** captured because it currently lists placeholder test products.
 - **FormLaw**, **SmartAutoFlex**, **BusJao**, certifications and education: taken from your resume (`public/resume.pdf`, October 2026). FormLaw's link (`formlaw.vercel.app`) returned Vercel `DEPLOYMENT_NOT_FOUND` on 25 Oct 2026, so it's hidden (`verified: false`) until redeployed.
-- **DataFusion**, **AI Ticketing Assistant**: described only from the scope you supplied. Statuses read *Demo project*, *Prototype* and *Founder initiative · early stage*, and SmartAutoFlex ideas are labelled *Concept*, *Exploring* or *Direction*.
+- **DataFusion**, **AI Ticketing Assistant**: described only from the scope you supplied. Statuses read *Demo project* and *Prototype*, and SmartAutoFlex ideas that aren't built are labelled *Concept*.
 - All project covers are **original illustrations**, labelled "Original artwork", never mock screenshots.
 - Skill → project links in the Stack section (`src/data/skills.ts`) exist only where the connection is verifiable.
 - The optional *Blockchain + AI firewall* project isn't included because no verifiable material was available. Add it to `projects.ts` when it is, with a clear status.
@@ -120,8 +119,8 @@ src/
                    settings (admin-panel schema + validation)
   admin/           AdminPage (/admin, lazy-loaded) and its API client
   pages/           HomePage, ProjectPage (/work/:slug), NotFoundPage
-  sections/        Intro, Hero, About, EngineeringPhilosophy, Capabilities, FounderSection,
-                   Journey, CaseFiles, Contact, Closing
+  sections/        Intro, Hero, About, EngineeringPhilosophy, Capabilities, Journey,
+                   CaseFiles, Contact, Closing
   components/
     layout/        Navigation (+ mobile menu), SectionProgress, Footer, Backdrop
     motion/        AnimatedText, Magnetic, Cursor

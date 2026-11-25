@@ -3,7 +3,9 @@ import type { CoverKey } from '../../data/types'
 import { useInView } from '../../hooks/useInView'
 import { DataFusionCover } from './covers/DataFusionCover'
 import { FormLawCover } from './covers/FormLawCover'
+import { IntelliScrutinyCover } from './covers/IntelliScrutinyCover'
 import { RizanCover } from './covers/RizanCover'
+import { SafFlowCover } from './covers/SafFlowCover'
 import { SmartAutoFlexCover } from './covers/SmartAutoFlexCover'
 import { TicketingCover } from './covers/TicketingCover'
 import { VktCover } from './covers/VktCover'
@@ -11,6 +13,8 @@ import './covers/covers.css'
 
 const COVERS: Record<CoverKey, ComponentType> = {
   formlaw: FormLawCover,
+  intelliscrutiny: IntelliScrutinyCover,
+  safflow: SafFlowCover,
   datafusion: DataFusionCover,
   rizan: RizanCover,
   vkt: VktCover,

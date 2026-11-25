@@ -11,7 +11,7 @@ import { chromium } from 'playwright-core'
 
 const channel = process.env.BROWSER_CHANNEL ?? 'msedge'
 const outDir = 'qa-report'
-const slugs = ['formlaw', 'datafusion', 'rizan-jewellery', 'vkt-shopping-centre', 'smartautoflex', 'ai-ticketing-assistant']
+const slugs = ['formlaw', 'intelliscrutiny', 'saf-flow', 'datafusion', 'rizan-jewellery', 'vkt-shopping-centre', 'smartautoflex', 'ai-ticketing-assistant']
 
 const viewports = {
   desktop: { viewport: { width: 1440, height: 900 } },
@@ -262,9 +262,12 @@ try {
   {
     const { page, context } = await open('/')
     await scrollToSelector(page, '#case-files', 200)
+    const row = page.locator('.case-row', { hasText: 'VKT' })
+    // click() scrolls the row into view first; do that before measuring.
+    await row.scrollIntoViewIfNeeded()
     await page.waitForTimeout(1500)
     const before = await page.evaluate(() => window.scrollY)
-    await page.locator('.case-row', { hasText: 'VKT' }).click()
+    await row.click()
     await page.waitForURL('**/work/vkt-shopping-centre')
     await page.waitForSelector('#case-title')
     await page.waitForTimeout(800)

@@ -46,7 +46,7 @@ export interface Profile {
 export const profile: Profile = {
   name: 'Abdul Gaffar',
   initials: 'AG',
-  role: 'AI Engineer & Full-Stack Developer',
+  role: 'AI Engineer — Agentic AI & Multi-Agent Systems',
 
   email: 'agmain926@gmail.com',
 
@@ -56,7 +56,7 @@ export const profile: Profile = {
     { id: 'leetcode', label: 'LeetCode', href: 'https://leetcode.com/u/Abdul07-bit/' },
   ],
 
-  availability: null,
+  availability: 'Open to AI Engineer roles · open to relocate to Hyderabad',
 
   resume: {
     path: '/resume.pdf',
@@ -77,7 +77,7 @@ export const profile: Profile = {
     alt: 'Portrait of Abdul Gaffar in a dark pinstripe three-piece suit, white shirt and black tie.',
   },
 
-  bio: "I'm an AI & Data Science engineer interested in building software that solves real problems. My work brings together full-stack development, intelligent automation, data processing, and cloud-native engineering. I enjoy turning these technologies into useful digital products for real businesses.",
+  bio: "I'm a final-year AI & Data Science student (2027) who designs and deploys agentic AI end to end. I build multi-agent systems with stateful, tool-using agents, LangGraph orchestration, RAG and prompt engineering, delivered through secure, cloud-native Python APIs — and I've shipped AI chatbots, voice agents and automations for 7 small-business clients.",
 
   education: {
     degree: 'B.Tech in Artificial Intelligence & Data Science',
@@ -87,14 +87,14 @@ export const profile: Profile = {
     cgpa: '8.03 / 10',
   },
 
-  // From the resume (October 2026).
+  // From the resume (November 2026).
   certifications: [
     { name: 'REST API Development — FastAPI', date: 'Jan 2026' },
     { name: 'SQL & Database Fundamentals — SQL, PostgreSQL', date: 'Feb 2025' },
     { name: 'Joy of Python — Python Programming', issuer: 'Hope Foundation', date: 'May 2023' },
   ],
 
-  focus: ['Agentic & generative AI', 'Full-stack development', 'Intelligent automation', 'Data processing', 'Cloud-native engineering'],
+  focus: ['Multi-agent systems & orchestration', 'RAG & prompt engineering', 'Human-in-the-loop AI', 'Secure, cloud-native Python APIs', 'Full-stack product engineering'],
 
   languages: [
     { name: 'Tamil', level: null },

@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useRef } from 'react'
 import { useLocation, useNavigationType } from 'react-router'
+import { ScrollMarquee } from '../components/motion/ScrollMarquee'
 import { ProjectGallery } from '../components/projects/ProjectGallery'
 import { homeSections } from '../data/navigation'
 import { useDocumentMeta } from '../hooks/useDocumentMeta'
@@ -14,6 +15,7 @@ import { Closing } from '../sections/Closing'
 import { Contact } from '../sections/Contact'
 import { EngineeringPhilosophy } from '../sections/EngineeringPhilosophy'
 import { Hero } from '../sections/Hero'
+import { Highlights } from '../sections/Highlights'
 import { Journey } from '../sections/Journey'
 
 // Remembered across visits to a case study so "Back" returns to the same spot.
@@ -45,6 +47,15 @@ export function HomePage() {
       // Ambient light drifts between sections.
       const mm = gsap.matchMedia()
       mm.add(MEDIA.motionOK, () => {
+        // Section headings drift against the scroll for depth (their lines still reveal on their own).
+        gsap.utils.toArray<HTMLElement>('.section h2:not(.sr-only)').forEach((heading) => {
+          gsap.fromTo(
+            heading,
+            { y: 70 },
+            { y: -50, ease: 'none', scrollTrigger: { trigger: heading, start: 'top bottom', end: 'bottom top', scrub: 0.8 } },
+          )
+        })
+
         const red = document.querySelector('[data-ambient="red"]')
         const silver = document.querySelector('[data-ambient="silver"]')
         if (!red || !silver) return
@@ -114,10 +125,12 @@ export function HomePage() {
       <Hero />
       <ProjectGallery />
       <About />
+      <Highlights />
       <EngineeringPhilosophy />
       <Capabilities />
       <Journey />
       <CaseFiles />
+      <ScrollMarquee rows={[['Open to AI Engineer roles', 'Agentic AI', 'Let’s build']]} travel={24} />
       <Contact />
       <Closing />
     </div>

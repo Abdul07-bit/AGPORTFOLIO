@@ -41,15 +41,31 @@ export const principles = [
   },
 ] as const
 
-// Most recent first. Dates come from Abdul's resume (October 2026).
+// Most recent first. Dates come from Abdul's resume (November 2026).
 export const journey: JourneyEntry[] = [
   {
     kind: 'Project',
+    title: 'IntelliScrutiny',
+    context: 'Multi-agent compliance review system',
+    when: 'Oct 2026',
+    description: 'Validation, verification and compliance agents as a stateful LangGraph workflow, with a versioned rule engine, hybrid RAG, OCR and a human reviewer confirming every decision.',
+    href: '/work/intelliscrutiny',
+  },
+  {
+    kind: 'Project',
     title: 'FormLaw',
-    context: 'Agentic AI legal intelligence & case management',
+    context: 'Agentic AI legal platform',
     when: 'Aug 2026',
-    description: 'Multi-agent workflows for legal research, case analysis and evidence review, with RAG-based document analysis, citations, RBAC, human approval and audit logging.',
+    description: '12 stateful, tool-using agents for legal research, case analysis, contract review, drafting and evidence verification — RAG with citations, a default-deny policy engine, human approval and 189 automated tests.',
     href: '/work/formlaw',
+  },
+  {
+    kind: 'Product',
+    title: 'SAF Flow',
+    context: 'Multi-tenant SaaS business suite',
+    when: '2026',
+    description: 'Restaurant, hotel and retail billing modules under one login, with per-business data isolation, shipped as an installable PWA.',
+    href: '/work/saf-flow',
   },
   {
     kind: 'Certification',
@@ -59,11 +75,11 @@ export const journey: JourneyEntry[] = [
     description: 'Building REST APIs with FastAPI.',
   },
   {
-    kind: 'Project',
-    title: 'SmartAutoFlex',
-    context: 'AI chatbots, voice agents & workflow automation',
-    when: 'Since Dec 2025',
-    description: 'Built AI chatbots and voice agents for customer support and bookings, and automation workflows with n8n and FastAPI.',
+    kind: 'Freelance AI developer',
+    title: 'Client projects · SmartAutoFlex',
+    context: 'AI agents for 7 small-business clients',
+    when: 'Dec 2025 – Present',
+    description: 'Designed and deployed AI chatbots, voice agents and event-driven n8n automations for 7 small businesses, from requirements to deployment on AWS.',
     href: '/work/smartautoflex',
   },
   {
@@ -116,6 +132,13 @@ export const journey: JourneyEntry[] = [
     context: 'St. Antony’s HSS, Nagapattinam · Modern Matriculation HSS, Nagore',
     when: '2021 – 2023',
     description: 'Higher secondary (2023) and senior secondary (2021) education.',
+  },
+  {
+    kind: 'Learning track',
+    title: 'Currently learning',
+    context: 'Azure AI · LLM fine-tuning · GraphQL · C#/.NET',
+    when: 'Ongoing',
+    description: 'Microsoft Azure (Azure OpenAI, AI Agent Service, Functions, ML), LLM fine-tuning, GraphQL, Microsoft Graph, C#/.NET, and Power BI with D3.js / Chart.js visuals.',
   },
   {
     kind: 'Learning track',

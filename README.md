@@ -104,6 +104,7 @@ This portfolio deliberately avoids invented claims: no fake metrics, clients, aw
 
 - **Rizan Jewellery** and **VKT Shopping Centre**: features and technology were verified against the live sites (October 2026), and the screenshots are real captures. The VKT shop page was **not** captured because it currently lists placeholder test products.
 - **FormLaw**, **SmartAutoFlex**, **BusJao**, certifications and education: taken from your resume (`public/resume.pdf`, October 2026). FormLaw's link (`formlaw.vercel.app`) returned Vercel `DEPLOYMENT_NOT_FOUND` on 25 Oct 2026, so it's hidden (`verified: false`) until redeployed.
+- **IntelliScrutiny**, the FormLaw agent/test counts and the 7 freelance clients: from the November 2026 resume (now `public/resume.pdf`). **SAF Flow**: modules, sign-in, data isolation and PWA install verified against saf-flow.vercel.app on 25 Nov 2026. The figures in the Highlights band (`src/sections/Highlights.tsx`) come from the same sources: 226 tests = 183 + 6 (FormLaw) + 37 (IntelliScrutiny).
 - **DataFusion**, **AI Ticketing Assistant**: described only from the scope you supplied. Statuses read *Demo project* and *Prototype*, and SmartAutoFlex ideas that aren't built are labelled *Concept*.
 - All project covers are **original illustrations**, labelled "Original artwork", never mock screenshots.
 - Skill → project links in the Stack section (`src/data/skills.ts`) exist only where the connection is verifiable.

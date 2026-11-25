@@ -119,8 +119,8 @@ export function Hero() {
           <p className="hero__eyebrow mono" data-hero-fade>
             <span className="hero__eyebrow-dot" aria-hidden="true" />
             <span>
-              <span className="hero__eyebrow-main">AI &amp; Data Science</span>
-              <span className="muted">Software engineering / Automation / Cloud</span>
+              <span className="hero__eyebrow-main">AI Engineer</span>
+              <span className="muted">Agentic AI / Multi-agent systems / Python</span>
             </span>
           </p>
           <div className="hero__readout mono muted" data-hero-fade aria-hidden="true">
@@ -146,8 +146,8 @@ export function Hero() {
 
         <div className="hero__bottom">
           <p className="hero__lead" data-hero-fade>
-            From intelligent automation and data systems to full-stack digital products, I turn complex ideas into
-            practical, scalable experiences.
+            I design and deploy agentic AI end to end — orchestrated, tool-using agents grounded with RAG, kept in
+            check by people, and shipped as secure, cloud-native products.
           </p>
           <div className="hero__ctas" data-hero-fade>
             <Magnetic>

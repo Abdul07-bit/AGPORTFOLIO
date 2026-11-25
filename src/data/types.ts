@@ -31,7 +31,7 @@ export interface ProjectScreenshot {
   device: 'desktop' | 'mobile'
 }
 
-export type CoverKey = 'formlaw' | 'datafusion' | 'rizan' | 'vkt' | 'smartautoflex' | 'ticketing'
+export type CoverKey = 'formlaw' | 'intelliscrutiny' | 'safflow' | 'datafusion' | 'rizan' | 'vkt' | 'smartautoflex' | 'ticketing'
 
 export interface ProjectTheme {
   /** Accent used inside the project's own artwork and detail page. */
